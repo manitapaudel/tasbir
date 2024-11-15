@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import ImageCard from "../components/ImageCard";
+import Button from "../components/Button";
+import ChevronLeft from "../components/icons/ChevronLeft";
+import ChevronRight from "../components/icons/ChevronRight";
 
 type Image = {
   id: string;
@@ -55,6 +58,20 @@ const Home = () => {
             author={image.author}
           />
         ))}
+      </section>
+      <section className="flex justify-center gap-10">
+        <Button
+          disabled={page === 1}
+          label="Prev"
+          Icon={<ChevronLeft />}
+          iconPosition="start"
+        />
+        <Button
+          disabled={page === 10}
+          label="Next"
+          Icon={<ChevronRight />}
+          iconPosition="end"
+        />
       </section>
     </main>
   );
