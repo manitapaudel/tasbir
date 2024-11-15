@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
+import ImageCard from "../components/ImageCard";
+
+type Image = {
+  id: string;
+  author: string;
+  width: number;
+  height: number;
+  url: string;
+  download_url: string;
+};
 
 const Home = () => {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<Image[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
 
@@ -34,7 +44,20 @@ const Home = () => {
   if (loading) {
     return <div>Loading ...</div>;
   }
-  return <div className="bg-gallery-bg h-auto py-10 px-20">Home Alone!</div>;
+
+  return (
+    <main className="bg-gallery-bg min-h-[85vh] py-10 px-20">
+      <section className="grid grid-cols-4 gap-4">
+        {images.map((image) => (
+          <ImageCard
+            key={image.id}
+            url={image.download_url}
+            author={image.author}
+          />
+        ))}
+      </section>
+    </main>
+  );
 };
 
 export default Home;
