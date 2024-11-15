@@ -10,6 +10,13 @@ export default {
         "gallery-med": "#759cd8",
         "gallery-dark": "#094d74",
       },
+      fontFamily: {
+        montserrat: '"Montserrat", "serif"',
+        inconsolata: '"Inconsolata", "serif"',
+      },
+      screens: {
+        500: "500px",
+      },
     },
   },
   plugins: [],
