@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import ImageCard from "../components/ImageCard";
 import Button from "../components/Button";
 import ChevronLeft from "../components/icons/ChevronLeft";
@@ -16,14 +17,14 @@ type Image = {
 const Home = () => {
   const [images, setImages] = useState<Image[]>([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://picsum.photos/v2/list?page=${page}&limit=16`
+          `https://picsum.photos/v2/list?page=${currentPage}&limit=16`
         );
 
         if (!response.ok) {
@@ -40,9 +41,17 @@ const Home = () => {
     };
 
     fetchImages();
-  }, [page]);
+  }, [currentPage]);
 
   console.log(images);
+
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
 
   if (loading) {
     return <div>Loading ...</div>;
@@ -64,16 +73,18 @@ const Home = () => {
       </section>
       <section className="flex justify-center gap-10 py-10">
         <Button
-          disabled={page === 1}
+          disabled={currentPage === 1}
           label="Prev"
           Icon={<ChevronLeft />}
           iconPosition="start"
+          onClick={handlePrevPage}
         />
         <Button
-          disabled={page === 10}
+          disabled={currentPage === 10}
           label="Next"
           Icon={<ChevronRight />}
           iconPosition="end"
+          onClick={handleNextPage}
         />
       </section>
     </main>
