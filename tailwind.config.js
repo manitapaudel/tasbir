@@ -14,6 +14,9 @@ export default {
         montserrat: '"Montserrat", "serif"',
         inconsolata: '"Inconsolata", "serif"',
       },
+      screens: {
+        500: "500px",
+      },
     },
   },
   plugins: [],

@@ -23,7 +23,7 @@ const Home = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://picsum.photos/v2/list?page=${page}&limit=10`
+          `https://picsum.photos/v2/list?page=${page}&limit=16`
         );
 
         if (!response.ok) {
@@ -49,11 +49,11 @@ const Home = () => {
   }
 
   return (
-    <main className="bg-gallery-bg min-h-[85vh] py-10 px-20">
+    <main className="bg-gallery-bg min-h-[85vh] px-5 py-10 500:px-10 md:px-20">
       <h1 className="uppercase font-semibold font-inconsolata text-3xl text-center py-5">
         Gallery
       </h1>
-      <section className="grid grid-cols-4 gap-4">
+      <section className="grid 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
         {images.map((image) => (
           <ImageCard
             key={image.id}
