@@ -4,6 +4,7 @@ import ImageCard from "../components/ImageCard";
 import Button from "../components/Button";
 import ChevronLeft from "../components/icons/ChevronLeft";
 import ChevronRight from "../components/icons/ChevronRight";
+import ImageCardSkeletonGrid from "../components/ImageCardSkeletonGrid";
 
 type Image = {
   id: string;
@@ -53,23 +54,23 @@ const Home = () => {
     setCurrentPage(currentPage + 1);
   };
 
-  if (loading) {
-    return <div>Loading ...</div>;
-  }
-
   return (
     <main className="bg-gallery-bg min-h-[85vh] px-5 py-10 500:px-10 md:px-20">
       <h1 className="uppercase font-semibold font-inconsolata text-3xl text-center py-5">
         Gallery
       </h1>
-      <section className="grid 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
-        {images.map((image) => (
-          <ImageCard
-            key={image.id}
-            url={image.download_url}
-            author={image.author}
-          />
-        ))}
+      <section className="grid 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center">
+        {loading ? (
+          <ImageCardSkeletonGrid />
+        ) : (
+          images.map((image) => (
+            <ImageCard
+              key={image.id}
+              url={image.download_url}
+              author={image.author}
+            />
+          ))
+        )}
       </section>
       <section className="flex justify-center gap-10 py-10">
         <Button

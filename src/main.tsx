@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./routes/Home";
 import Root from "./routes/Root";
 import "./index.css";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <SkeletonTheme baseColor="#9cb9d1" highlightColor="#cfdaec">
+      <RouterProvider router={router} />
+    </SkeletonTheme>
   </StrictMode>
 );
