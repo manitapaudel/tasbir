@@ -59,7 +59,7 @@ const Home = () => {
       <h1 className="uppercase font-semibold font-inconsolata text-3xl text-center py-5">
         Gallery
       </h1>
-      <section className="grid 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+      <section className="grid 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center">
         {loading ? (
           <ImageCardSkeletonGrid />
         ) : (
