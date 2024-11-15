@@ -18,7 +18,7 @@ const Button = ({
       disabled={disabled}
       className={`flex ${
         iconPosition === "end" ? "flex-row-reverse" : ""
-      } items-center font-montserrat disabled:cursor-not-allowed`}
+      } items-center font-montserrat disabled:cursor-not-allowed hover:text-gallery-dark`}
     >
       {Icon} <span className="font-medium mb-0.5">{label}</span>
     </button>
