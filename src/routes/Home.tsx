@@ -50,6 +50,9 @@ const Home = () => {
 
   return (
     <main className="bg-gallery-bg min-h-[85vh] py-10 px-20">
+      <h1 className="uppercase font-semibold font-inconsolata text-3xl text-center py-5">
+        Gallery
+      </h1>
       <section className="grid grid-cols-4 gap-4">
         {images.map((image) => (
           <ImageCard
@@ -59,7 +62,7 @@ const Home = () => {
           />
         ))}
       </section>
-      <section className="flex justify-center gap-10">
+      <section className="flex justify-center gap-10 py-10">
         <Button
           disabled={page === 1}
           label="Prev"
