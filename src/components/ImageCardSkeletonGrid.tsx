@@ -6,8 +6,7 @@ const ImageCardSkeleton = () => {
     <>
       {Array.from({ length: 12 }).map((_, index) => (
         <div className="flex flex-col gap-3" key={index}>
-          <Skeleton height={300} />
-          <Skeleton height={30} />
+          <Skeleton height={330} />
         </div>
       ))}
     </>

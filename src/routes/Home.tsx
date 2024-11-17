@@ -50,7 +50,7 @@ const Home = () => {
         Our very own Exhibition.
       </h2> */}
 
-      <section className="grid 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center">
+      <section className="grid grid-cols-1 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center">
         {loading ? (
           <ImageCardSkeletonGrid />
         ) : (
