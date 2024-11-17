@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import CloseIcon from "./icons/CloseIcon";
 import { Image } from "../types";
+import { Link } from "react-router-dom";
 
 type LightboxProps = {
   showLightbox: boolean;
@@ -30,17 +31,44 @@ const Lightbox = ({
   };
 
   return (
-    <div className="fixed top-0 left-0 z-10 bg-red-100 bg-opacity-50 w-screen min-h-screen">
-      <button className="" onClick={handleClose} title="Close Modal">
-        <CloseIcon extraClass="absolute right-12 top-6 hover:text-red-600" />
+    <div className="fixed top-0 left-0 z-10 bg-red-800 w-screen min-h-screen">
+      <button
+        className="absolute right-12 top-6 text-gray-beige-200 hover:text-white p-2 border-2 border-gray-beige-200 hover:border-white rounded-full"
+        onClick={handleClose}
+        title="Close Modal"
+      >
+        <CloseIcon extraClass="" />
       </button>
-      <div className="bg-white w-2/3 rounded-lg p-2 mx-auto mt-1">
-        <img
-          src={imageData.download_url}
-          width={imageData.width}
-          alt=""
-          className="w-full h-auto max-h-[80vh] "
-        />
+      <div className="flex items-center justify-center gap-32 bg-gray-beige-200 w-4/5 h-[80vh] rounded-lg p-2 mx-auto mt-24">
+        <div className="bg-white p-2">
+          <img
+            src={imageData.download_url}
+            width={imageData.width}
+            alt=""
+            className="w-60 h-72 object-fill"
+          />
+          <p></p>
+        </div>
+        <div className="w-1/3">
+          <h1 className="uppercase font-semibold font-inconsolata text-3xl">
+            {imageData.author}
+          </h1>
+          <p className="my-6 font-montserrat font-medium">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem aut,
+            hic nam beatae vero voluptas quaerat dolorem accusamus quam velit?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Perspiciatis, molestias!
+          </p>
+          <div className="flex justify-between items-end">
+            {/* TODO: create a primary button */}
+            <button className="bg-red-800 hover:bg-red-700 text-white px-4 py-2 rounded">
+              Add to Favourites
+            </button>
+            <Link to="" className="font-medium hover:underline">
+              Read more
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

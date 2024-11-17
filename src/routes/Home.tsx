@@ -45,7 +45,7 @@ const Home = () => {
   };
 
   return (
-    <main className="bg-gallery-bg min-h-[85vh] px-5 py-10 500:px-10 md:px-20">
+    <main className="bg-gray-beige-100 min-h-[85vh] px-5 py-10 500:px-10 md:px-20">
       <h1 className="uppercase font-semibold font-inconsolata text-3xl text-center py-5">
         Gallery
       </h1>
