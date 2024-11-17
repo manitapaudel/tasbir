@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import HamburgerIcon from "./icons/HamburgerIcon";
@@ -6,6 +6,23 @@ import Drawer from "./Drawer";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [hasShadow, setHasShadow] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setHasShadow(true);
+      } else {
+        setHasShadow(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
@@ -13,7 +30,11 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-10 flex items-center justify-between font-montserrat bg-gray-beige-100 h-[10vh] min-h-[72px] px-[5vw]">
+      <nav
+        className={`sticky top-0 z-10 flex items-center justify-between font-montserrat bg-gray-beige-100 h-[10vh] min-h-[72px] px-[5vw] transition-shadow duration-300 ${
+          hasShadow ? "shadow-lg" : ""
+        }`}
+      >
         <Link to="/" className="font-medium text-2xl">
           <img
             src="/tasbir-logo.png"
