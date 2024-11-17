@@ -1,7 +1,8 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import CloseIcon from "./icons/CloseIcon";
 import { Image } from "../types";
-import { Link } from "react-router-dom";
 
 type LightboxProps = {
   showLightbox: boolean;
