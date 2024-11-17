@@ -21,7 +21,7 @@ const ImageCard = ({ imageData }: ImageCardProps) => {
         className="group max-h-96 rounded-md hover:cursor-pointer hover:animate-wiggle bg-white p-4"
         onClick={toggleLightbox}
       >
-        <div className="relative">
+        <div className="relative" title="Click to open lightbox">
           <img
             src={imageData.download_url}
             alt=""

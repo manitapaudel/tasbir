@@ -17,10 +17,13 @@ const Header = () => {
       <form action="" className="flex items-center justify-center mt-5">
         <input
           type="text"
-          placeholder="Search your artist's work..."
+          placeholder="Search your favourite artists..."
           className="500:min-w-72 h-11 px-3 rounded-l-md"
         />
-        <button className="bg-red-800 hover:bg-red-600 text-white p-2.5 rounded-r-md">
+        <button
+          className="bg-red-800 hover:bg-red-600 text-white p-2.5 rounded-r-md"
+          title="Search Artists"
+        >
           <SearchIcon />
         </button>
       </form>

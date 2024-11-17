@@ -70,7 +70,7 @@ const Lightbox = ({
               Add to Favourites
             </button>
 
-            <button className="500:hidden">
+            <button className="500:hidden" title="Add to favourites">
               <HeartIcon />
             </button>
             <Link to="" className="font-medium hover:underline">
