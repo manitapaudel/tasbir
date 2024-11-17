@@ -5,7 +5,12 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-10 flex items-center justify-between font-montserrat bg-gray-beige-100 h-[10vh] px-[5vw]">
       <Link to="/" className="font-medium text-2xl">
-        Tasbir.
+        <img
+          src="/tasbir-logo.png"
+          width={200}
+          alt="Tasbir logo with r as a feather"
+          className="max-h-[72px]"
+        />
       </Link>
       <div className="hidden sm:flex gap-20">
         <Link to="/" className="font-medium hover:text-red-800">
