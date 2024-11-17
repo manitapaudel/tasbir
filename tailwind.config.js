@@ -13,9 +13,20 @@ export default {
       fontFamily: {
         montserrat: '"Montserrat", "serif"',
         inconsolata: '"Inconsolata", "serif"',
+        indieFlower: '"Indie Flower", "cursive"',
       },
       screens: {
         500: "500px",
+      },
+
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 1s ease-in-out infinite",
       },
     },
   },
