@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import { navLinks } from "./constants";
 import HamburgerIcon from "./icons/HamburgerIcon";
 import Drawer from "./Drawer";
 
@@ -43,13 +44,17 @@ const Navbar = () => {
             className="max-h-[72px]"
           />
         </Link>
-        <div className="hidden sm:flex gap-20">
-          <Link to="/" className="font-medium hover:text-red-800">
-            Our Portfolio
-          </Link>
-          <Link to="/" className="font-medium hover:text-red-800">
-            Events
-          </Link>
+        <div className="hidden sm:flex gap-10 md:gap-20">
+          {navLinks.map(({ href, title }) => (
+            <Link
+              key={title}
+              to={href}
+              className="font-medium hover:text-red-800"
+              onClick={() => setDrawerOpen(false)}
+            >
+              {title}
+            </Link>
+          ))}
         </div>
         <button className="hidden sm:block bg-red-800 hover:bg-red-700 text-white px-4 py-2 rounded">
           Book Us

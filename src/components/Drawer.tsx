@@ -1,8 +1,9 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 import useOutsideClickHandler from "../hooks/useOutsideClickHandler";
 import CloseIcon from "./icons/CloseIcon";
-import { Link } from "react-router-dom";
+import { navLinks } from "./constants";
 
 type DrawerProps = {
   drawerOpen: boolean;
@@ -18,7 +19,7 @@ const Drawer = ({ drawerOpen, setDrawerOpen }: DrawerProps) => {
 
   return (
     <div
-      className={`fixed 850:hidden top-0 bottom-0 z-10 bg-red-800 text-white font-montserrat py-10 w-[100vw] 500:w-[60vw] sm:w-[50vw] h-full ease-in-out duration-300
+      className={`fixed 850:hidden top-0 bottom-0 z-10 bg-red-800 text-white font-montserrat w-[100vw] 500:w-[60vw] sm:w-[50vw] h-full ease-in-out duration-300
  ${drawerOpen ? "translate-x-0 " : "-translate-x-full"}`}
       ref={drawerRef}
     >
@@ -29,30 +30,32 @@ const Drawer = ({ drawerOpen, setDrawerOpen }: DrawerProps) => {
         <CloseIcon />
       </button>
 
-      <div>
-        <Link to="/" className="font-medium text-2xl">
-          <img
-            src="/logo-sm.png"
-            width={200}
-            alt="Tasbir logo with r as a feather"
-            className="max-h-[72px]"
-          />
-        </Link>
+      <Link
+        to="/"
+        className="font-medium text-2xl"
+        onClick={() => setDrawerOpen(false)}
+      >
+        <img
+          src="/logo-sm.png"
+          width={200}
+          alt="Tasbir logo with r as a feather"
+          className="max-h-[72px]"
+        />
+      </Link>
 
-        <div className="flex flex-col gap-10 px-5 py-10">
+      <div className="flex flex-col gap-10 px-5 py-20">
+        {navLinks.map(({ href, title }) => (
           <Link
-            to="/"
+            key={title}
+            to={href}
             className="font-medium text-white hover:text-gray-beige-200"
           >
-            Our Portfolio
+            {title}
           </Link>
-          <Link to="/" className="font-medium hover:text-gray-beige-200">
-            Events
-          </Link>
-          <button className="bg-white text-red-800 hover:bg-gray-beige-200 px-4 py-2 rounded">
-            Book Us
-          </button>
-        </div>
+        ))}
+        <button className="bg-white text-red-800 hover:bg-gray-beige-200 px-4 py-2 rounded">
+          Book Us
+        </button>
       </div>
     </div>
   );
