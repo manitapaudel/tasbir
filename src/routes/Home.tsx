@@ -46,9 +46,9 @@ const Home = () => {
 
   return (
     <main className="bg-gray-beige-100 min-h-[85vh] px-5 py-10 500:px-10 md:px-20">
-      <h1 className="uppercase font-semibold font-inconsolata text-3xl text-center py-5">
-        Gallery
-      </h1>
+      <h2 className="font-inconsolata font-medium text-3xl text-center mb-2">
+        Our very own Exhibition.
+      </h2>
       <section className="grid 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center">
         {loading ? (
           <ImageCardSkeletonGrid />
