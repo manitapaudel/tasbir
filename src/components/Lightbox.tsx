@@ -32,9 +32,9 @@ const Lightbox = ({
   return (
     <div className="fixed top-0 left-0 z-10 bg-red-100 bg-opacity-50 w-screen min-h-screen">
       <button className="" onClick={handleClose} title="Close Modal">
-        <CloseIcon extraClass="absolute right-12 top-6" />
+        <CloseIcon extraClass="absolute right-12 top-6 hover:text-red-600" />
       </button>
-      <div className="bg-white w-2/3 rounded-lg p-3 mx-auto mt-1">
+      <div className="bg-white w-2/3 rounded-lg p-2 mx-auto mt-1">
         <img
           src={imageData.download_url}
           width={imageData.width}
