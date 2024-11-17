@@ -1,3 +1,5 @@
+import SearchIcon from "./icons/SearchIcon";
+
 const Header = () => {
   return (
     <header className="text-center bg-gray-beige-100 py-8">
@@ -12,6 +14,16 @@ const Header = () => {
           <span className="animate-textFocus">U</span>
         </div>
       </div>
+      <form action="" className="flex items-center justify-center mt-5">
+        <input
+          type="text"
+          placeholder="Place your search..."
+          className="500:min-w-72 h-11 px-3 rounded-l-md"
+        />
+        <button className="bg-red-800 hover:bg-red-600 text-white p-2.5 rounded-r-md">
+          <SearchIcon />
+        </button>
+      </form>
     </header>
   );
 };
