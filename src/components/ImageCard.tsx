@@ -33,7 +33,11 @@ const ImageCard = ({ imageData }: ImageCardProps) => {
         </p>
       </div>
       {showLightbox && (
-        <Lightbox setShowLightbox={setShowLightbox} imageData={imageData} />
+        <Lightbox
+          showLightbox={showLightbox}
+          setShowLightbox={setShowLightbox}
+          imageData={imageData}
+        />
       )}
     </>
   );
