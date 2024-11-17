@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import CloseIcon from "./icons/CloseIcon";
 import { Image } from "../types";
+import HeartIcon from "./icons/HeartIcon";
 
 type LightboxProps = {
   showLightbox: boolean;
@@ -40,17 +41,17 @@ const Lightbox = ({
       >
         <CloseIcon extraClass="" />
       </button>
-      <div className="flex items-center justify-center gap-32 bg-gray-beige-200 w-4/5 h-[80vh] rounded-lg p-2 mx-auto mt-24">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-10 xl:gap-32 bg-gray-beige-200 w-4/5 500:h-[80vh] rounded-lg px-6 py-4 md:p-2 mx-auto mt-24">
         <div className="bg-white p-2">
           <img
             src={imageData.download_url}
             width={imageData.width}
             alt=""
-            className="w-60 h-72 object-fill"
+            className="w-60 md:h-72 object-fill"
           />
           <p></p>
         </div>
-        <div className="w-1/3">
+        <div className="md:w-1/2 xl:w-1/3">
           <h1 className="uppercase font-semibold font-inconsolata text-3xl">
             {imageData.author}
           </h1>
@@ -62,8 +63,12 @@ const Lightbox = ({
           </p>
           <div className="flex justify-between items-end">
             {/* TODO: create a primary button */}
-            <button className="bg-red-800 hover:bg-red-700 text-white px-4 py-2 rounded">
+            <button className="hidden 500:block bg-red-800 hover:bg-red-700 text-white px-4 py-2 rounded">
               Add to Favourites
+            </button>
+
+            <button className="500:hidden">
+              <HeartIcon />
             </button>
             <Link to="" className="font-medium hover:underline">
               Read more
