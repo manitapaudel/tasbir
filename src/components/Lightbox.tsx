@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import CloseIcon from "./icons/CloseIcon";
-import { Image } from "../types";
 import HeartIcon from "./icons/HeartIcon";
+import { Image } from "../types";
+import SocialShares from "./SocialShares";
 
 type LightboxProps = {
   showLightbox: boolean;
@@ -42,14 +43,16 @@ const Lightbox = ({
         <CloseIcon extraClass="" />
       </button>
       <div className="flex flex-col md:flex-row items-center justify-center gap-10 xl:gap-32 bg-gray-beige-200 w-4/5 500:h-[80vh] rounded-lg px-6 py-4 md:p-2 mx-auto mt-24">
-        <div className="bg-white p-2">
-          <img
-            src={imageData.download_url}
-            width={imageData.width}
-            alt=""
-            className="w-60 md:h-72 object-fill"
-          />
-          <p></p>
+        <div className="flex flex-col items-center gap-3">
+          <div className="bg-white p-2">
+            <img
+              src={imageData.download_url}
+              width={imageData.width}
+              alt=""
+              className="w-60 md:h-72 object-fill"
+            />
+          </div>
+          <SocialShares imageUrl={imageData.download_url} />
         </div>
         <div className="md:w-1/2 xl:w-1/3">
           <h1 className="uppercase font-semibold font-inconsolata text-3xl">
