@@ -1,16 +1,48 @@
+import { useState } from "react";
+
+import ExpandIcon from "./icons/ExpandIcon";
+import Lightbox from "./Lightbox";
+import { Image } from "../types";
+
 type ImageCardProps = {
-  url: string;
-  author: string;
+  imageData: Image;
 };
 
-const ImageCard = ({ url, author }: ImageCardProps) => {
+const ImageCard = ({ imageData }: ImageCardProps) => {
+  const [showLightbox, setShowLightbox] = useState(false);
+
+  const toggleLightbox = () => {
+    setShowLightbox(!showLightbox);
+  };
+
   return (
-    <div className="max-h-96 rounded-md">
-      <img src={url} alt="" width="400" className="h-[300px] rounded-md" />
-      <p className="uppercase font-inconsolata lg:text-[1.5vw] tracking-wider font-medium text-center text-gallery-med">
-        {author}
-      </p>
-    </div>
+    <>
+      <div
+        className="group max-h-96 rounded-md hover:cursor-pointer hover:animate-wiggle bg-white p-4"
+        onClick={toggleLightbox}
+      >
+        <div className="relative">
+          <img
+            src={imageData.download_url}
+            alt=""
+            width="400"
+            className="h-[300px] w-full rounded-t-md group-hover:opacity-50"
+          />
+          <ExpandIcon extraClass="absolute hidden group-hover:block top-1/2 left-1/2" />
+        </div>
+
+        <p className="font-indieFlower lg:text-[1.5vw] text-center py-2">
+          {imageData.author}
+        </p>
+      </div>
+      {showLightbox && (
+        <Lightbox
+          showLightbox={showLightbox}
+          setShowLightbox={setShowLightbox}
+          imageData={imageData}
+        />
+      )}
+    </>
   );
 };
 

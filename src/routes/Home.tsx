@@ -5,15 +5,7 @@ import Button from "../components/Button";
 import ChevronLeft from "../components/icons/ChevronLeft";
 import ChevronRight from "../components/icons/ChevronRight";
 import ImageCardSkeletonGrid from "../components/ImageCardSkeletonGrid";
-
-type Image = {
-  id: string;
-  author: string;
-  width: number;
-  height: number;
-  url: string;
-  download_url: string;
-};
+import { Image } from "../types";
 
 const Home = () => {
   const [images, setImages] = useState<Image[]>([]);
@@ -44,8 +36,6 @@ const Home = () => {
     fetchImages();
   }, [currentPage]);
 
-  console.log(images);
-
   const handlePrevPage = () => {
     setCurrentPage(currentPage - 1);
   };
@@ -63,13 +53,7 @@ const Home = () => {
         {loading ? (
           <ImageCardSkeletonGrid />
         ) : (
-          images.map((image) => (
-            <ImageCard
-              key={image.id}
-              url={image.download_url}
-              author={image.author}
-            />
-          ))
+          images.map((image) => <ImageCard key={image.id} imageData={image} />)
         )}
       </section>
       <section className="flex justify-center gap-10 py-10">
