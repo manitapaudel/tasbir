@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 import { getLocalStorage, setLocalStorage } from "../utils";
 import HeartIcon from "./icons/HeartIcon";
@@ -42,7 +41,7 @@ const FavouriteToggle = ({ imageData }: { imageData: Image }) => {
   };
 
   return (
-    <div className="flex 500:flex-col-reverse lg:flex-row items-end 500:items-start lg:items-end justify-between gap-2">
+    <>
       {!isFavourite ? (
         <Button
           size="md"
@@ -69,10 +68,7 @@ const FavouriteToggle = ({ imageData }: { imageData: Image }) => {
           </>
         </Button>
       )}
-      <Link to="" className="font-medium hover:underline">
-        Read more
-      </Link>
-    </div>
+    </>
   );
 };
 

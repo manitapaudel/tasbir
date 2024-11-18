@@ -5,6 +5,7 @@ import { Image } from "../types";
 import SocialShares from "./SocialShares";
 import Button from "./Button";
 import FavouriteToggle from "./FavouriteToggle";
+import { Link } from "react-router-dom";
 
 type LightboxProps = {
   showLightbox: boolean;
@@ -60,13 +61,18 @@ const Lightbox = ({
           <h1 className="uppercase font-semibold font-inconsolata text-2xl 500:text-3xl">
             {imageData.author}
           </h1>
-          <p className="my-3 500:my-6 font-montserrat font-medium">
+          <p className="my-3 sm:my-6 font-montserrat font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem aut,
             hic nam beatae vero voluptas quaerat dolorem accusamus quam velit?
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Perspiciatis, molestias!
           </p>
-          <FavouriteToggle imageData={imageData} />
+          <div className="flex md:flex-col-reverse lg:flex-row items-end 500:items-start lg:items-end justify-between gap-2">
+            <FavouriteToggle imageData={imageData} />
+            <Link to="" className="font-medium hover:underline">
+              Read more
+            </Link>
+          </div>
         </div>
       </div>
     </div>
