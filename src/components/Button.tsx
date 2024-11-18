@@ -1,29 +1,19 @@
 import { MouseEventHandler, ReactElement } from "react";
 
 type ButtonProps = {
-  label: string;
+  children: ReactElement | string;
   disabled: boolean;
-  Icon: ReactElement;
-  iconPosition: "start" | "end";
   onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
-const Button = ({
-  label,
-  disabled = false,
-  Icon,
-  iconPosition,
-  onClick,
-}: ButtonProps) => {
+const Button = ({ children, disabled = false, onClick }: ButtonProps) => {
   return (
     <button
       disabled={disabled}
-      className={`flex ${
-        iconPosition === "end" ? "flex-row-reverse" : ""
-      } items-center font-montserrat disabled:cursor-not-allowed hover:text-red-800 disabled:text-black`}
+      className={`flex items-center font-montserrat disabled:cursor-not-allowed hover:text-red-800 disabled:text-black`}
       onClick={onClick}
     >
-      {Icon} <span className="font-medium mb-0.5">{label}</span>
+      {children}
     </button>
   );
 };

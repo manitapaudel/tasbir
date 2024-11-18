@@ -58,20 +58,17 @@ const Home = () => {
         )}
       </section>
       <section className="flex justify-center gap-10 py-10">
-        <Button
-          disabled={currentPage === 1}
-          label="Prev"
-          Icon={<ChevronLeft />}
-          iconPosition="start"
-          onClick={handlePrevPage}
-        />
-        <Button
-          disabled={currentPage === 10}
-          label="Next"
-          Icon={<ChevronRight />}
-          iconPosition="end"
-          onClick={handleNextPage}
-        />
+        <Button disabled={currentPage === 1} onClick={handlePrevPage}>
+          <>
+            <ChevronLeft /> <span className="font-medium mb-0.5">Prev</span>
+          </>
+        </Button>
+        <Button disabled={currentPage === 10} onClick={handleNextPage}>
+          <>
+            <span className="font-medium mb-0.5">Next</span>
+            <ChevronRight />
+          </>
+        </Button>
       </section>
     </main>
   );
