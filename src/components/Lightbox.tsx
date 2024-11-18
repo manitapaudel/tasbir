@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
-import { getLocalStorage } from "../utils";
 import CloseIcon from "./icons/CloseIcon";
-import HeartIcon from "./icons/HeartIcon";
 import { Image } from "../types";
 import SocialShares from "./SocialShares";
 import Button from "./Button";
+import FavouriteToggle from "./FavouriteToggle";
 
 type LightboxProps = {
   showLightbox: boolean;
@@ -19,8 +17,6 @@ const Lightbox = ({
   setShowLightbox,
   imageData,
 }: LightboxProps) => {
-  const [isFavourite, setIsFavourite] = useState(false);
-
   // To prevent background scrolling when the modal is open
   useEffect(() => {
     if (showLightbox) {
@@ -33,19 +29,8 @@ const Lightbox = ({
     };
   }, [showLightbox]);
 
-  // useEffect(() => {
-  //   setFavourites(getLocalStorage("favourites", []));
-  // }, [favourites]);
-
   const handleClose = () => {
     setShowLightbox(false);
-  };
-
-  const addToFavourites = () => {
-    setIsFavourite(true);
-  };
-  const removeFromFavourites = () => {
-    setIsFavourite(false);
   };
 
   return (
@@ -81,39 +66,7 @@ const Lightbox = ({
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Perspiciatis, molestias!
           </p>
-          <div className="flex 500:flex-col-reverse lg:flex-row items-end 500:items-start lg:items-end justify-between gap-2">
-            {!isFavourite ? (
-              <Button
-                size="md"
-                variant="primary"
-                extraClass="flex items-center gap-2"
-                onClick={addToFavourites}
-              >
-                <>
-                  <HeartIcon />
-                  <span className="hidden 500:block">Add to Favourites</span>
-                </>
-              </Button>
-            ) : (
-              <Button
-                size="md"
-                variant="secondary"
-                extraClass="flex items-center gap-2"
-                title="Remove from favourites"
-                onClick={removeFromFavourites}
-              >
-                <>
-                  <HeartIcon />
-                  <span className="hidden 500:block">
-                    Remove from Favourites
-                  </span>
-                </>
-              </Button>
-            )}
-            <Link to="" className="font-medium hover:underline">
-              Read more
-            </Link>
-          </div>
+          <FavouriteToggle imageData={imageData} />
         </div>
       </div>
     </div>
