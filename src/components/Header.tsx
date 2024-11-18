@@ -1,3 +1,4 @@
+import Button from "./Button";
 import SearchIcon from "./icons/SearchIcon";
 
 const Header = () => {
@@ -20,12 +21,15 @@ const Header = () => {
           placeholder="Search your favourite artists..."
           className="500:min-w-72 h-11 px-3 rounded-l-md"
         />
-        <button
-          className="bg-red-800 hover:bg-red-600 text-white p-2.5 rounded-r-md"
+        <Button
+          size="md"
+          variant="primary"
           title="Search Artists"
+          extraClass="rounded-l-none rounded-r-lg min-h-11"
+          onClick={() => {}}
         >
           <SearchIcon />
-        </button>
+        </Button>
       </form>
     </header>
   );

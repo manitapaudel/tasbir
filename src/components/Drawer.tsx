@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useOutsideClickHandler from "../hooks/useOutsideClickHandler";
 import CloseIcon from "./icons/CloseIcon";
 import { navLinks } from "./constants";
+import Button from "./Button";
 
 type DrawerProps = {
   drawerOpen: boolean;
@@ -53,9 +54,9 @@ const Drawer = ({ drawerOpen, setDrawerOpen }: DrawerProps) => {
             {title}
           </Link>
         ))}
-        <button className="bg-white text-red-800 hover:bg-gray-beige-200 px-4 py-2 rounded">
+        <Button size="md" variant="secondary" onClick={() => {}}>
           Book Us
-        </button>
+        </Button>
       </div>
     </div>
   );

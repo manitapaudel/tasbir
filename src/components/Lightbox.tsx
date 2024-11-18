@@ -5,6 +5,7 @@ import CloseIcon from "./icons/CloseIcon";
 import HeartIcon from "./icons/HeartIcon";
 import { Image } from "../types";
 import SocialShares from "./SocialShares";
+import Button from "./Button";
 
 type LightboxProps = {
   showLightbox: boolean;
@@ -65,14 +66,24 @@ const Lightbox = ({
             Perspiciatis, molestias!
           </p>
           <div className="flex justify-between items-end">
-            {/* TODO: create a primary button */}
-            <button className="hidden 500:block bg-red-800 hover:bg-red-700 text-white px-4 py-2 rounded">
+            <Button
+              size="md"
+              variant="primary"
+              extraClass="hidden 500:block"
+              onClick={() => {}}
+            >
               Add to Favourites
-            </button>
+            </Button>
 
-            <button className="500:hidden" title="Add to favourites">
+            <Button
+              size="md"
+              variant="text"
+              extraClass="500:hidden"
+              title="Add to favourites"
+              onClick={() => {}}
+            >
               <HeartIcon />
-            </button>
+            </Button>
             <Link to="" className="font-medium hover:underline">
               Read more
             </Link>

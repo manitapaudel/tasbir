@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { navLinks } from "./constants";
 import HamburgerIcon from "./icons/HamburgerIcon";
 import Drawer from "./Drawer";
+import Button from "./Button";
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -56,17 +57,24 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-        <button className="hidden sm:block bg-red-800 hover:bg-red-700 text-white px-4 py-2 rounded">
+        <Button
+          size="md"
+          variant="primary"
+          extraClass="hidden sm:block"
+          onClick={() => {}}
+        >
           Book Us
-        </button>
+        </Button>
 
-        <button
-          className="block sm:hidden text-red-800 hover:text-red-700 hover:cursor-pointer"
+        <Button
+          size="lg"
+          variant="text"
+          extraClass="block sm:hidden"
           title="Open drawer"
           onClick={toggleDrawer}
         >
-          <HamburgerIcon />
-        </button>
+          <HamburgerIcon extraClass="text-red-800" />
+        </Button>
       </nav>
       <Drawer setDrawerOpen={setDrawerOpen} drawerOpen={drawerOpen} />
     </>

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { IconProps } from "../../types";
 
 const ExpandIcon = ({ extraClass }: IconProps) => {
@@ -8,7 +9,7 @@ const ExpandIcon = ({ extraClass }: IconProps) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className={`w-6 h-6 ${extraClass}`}
+      className={clsx("w-6 h-6", extraClass)}
     >
       <path
         strokeLinecap="round"

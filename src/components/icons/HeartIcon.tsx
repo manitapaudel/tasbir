@@ -1,4 +1,7 @@
-const HeartIcon = () => {
+import clsx from "clsx";
+import { IconProps } from "../../types";
+
+const HeartIcon = ({ extraClass }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +9,7 @@ const HeartIcon = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
+      className={clsx("w-6 h-6", extraClass)}
     >
       <path
         strokeLinecap="round"
