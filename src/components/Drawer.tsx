@@ -24,12 +24,15 @@ const Drawer = ({ drawerOpen, setDrawerOpen }: DrawerProps) => {
  ${drawerOpen ? "translate-x-0 " : "-translate-x-full"}`}
       ref={drawerRef}
     >
-      <button
-        className="absolute right-5 top-5 border-2 p-2 rounded-full"
+      <Button
+        size="xs"
+        variant="close"
+        extraClass="!p-1"
         onClick={() => setDrawerOpen(false)}
+        title="Close Drawer"
       >
         <CloseIcon />
-      </button>
+      </Button>
 
       <Link
         to="/"

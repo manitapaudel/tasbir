@@ -5,7 +5,7 @@ type ButtonProps = {
   children: ReactElement | string;
   disabled?: boolean;
   size: "xs" | "sm" | "md" | "lg";
-  variant: "primary" | "secondary" | "text";
+  variant: "close" | "primary" | "secondary" | "text";
   extraClass?: string;
   title?: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
@@ -19,6 +19,8 @@ const variantStyles = {
   secondary:
     "bg-white text-red-800 hover:bg-gray-beige-200 focus:ring-gray-geige-200",
   text: "bg-transparent text-gray-800 hover:text-red-800 disabled:text-gray-400 focus:ring-red-400",
+  close:
+    "absolute right-12 top-6 text-gray-beige-200 hover:text-white border-2 border-gray-beige-200 hover:border-white rounded-full",
 };
 
 const sizeStyles = {

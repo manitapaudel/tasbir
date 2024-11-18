@@ -36,13 +36,15 @@ const Lightbox = ({
 
   return (
     <div className="fixed top-0 left-0 z-10 bg-red-800 w-screen min-h-screen">
-      <button
-        className="absolute right-12 top-6 text-gray-beige-200 hover:text-white p-2 border-2 border-gray-beige-200 hover:border-white rounded-full"
+      <Button
+        size="xs"
+        variant="close"
+        extraClass="!p-1 lg:!p-2"
         onClick={handleClose}
         title="Close Modal"
       >
         <CloseIcon extraClass="" />
-      </button>
+      </Button>
       <div className="flex flex-col md:flex-row items-center justify-center gap-10 xl:gap-32 bg-gray-beige-200 w-4/5 500:h-[80vh] rounded-lg px-6 py-4 md:p-2 mx-auto mt-24">
         <div className="flex flex-col items-center gap-3">
           <div className="bg-white p-2">
