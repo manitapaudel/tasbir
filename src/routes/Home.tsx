@@ -1,61 +1,47 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
+import { Image } from "../types";
 import ImageCard from "../components/ImageCard";
 import Button from "../components/Button";
 import ChevronLeft from "../components/icons/ChevronLeft";
 import ChevronRight from "../components/icons/ChevronRight";
 import ImageCardSkeletonGrid from "../components/ImageCardSkeletonGrid";
-import { Image } from "../types";
 import Hero from "../components/Hero";
 
 const Home = () => {
-  const [images, setImages] = useState<Image[]>([]);
-  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          `https://picsum.photos/v2/list?page=${currentPage}&limit=16`
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch images.");
-        }
-
-        const data = await response.json();
-        setImages(data);
-      } catch (e) {
-        console.log(e);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchImages();
-  }, [currentPage]);
+  const { isPending, data } = useQuery({
+    queryKey: ["images", currentPage],
+    queryFn: () =>
+      fetch(`https://picsum.photos/v2/list?page=${currentPage}&limit=100`).then(
+        (res) => res.json()
+      ),
+    placeholderData: (prevData) => prevData,
+  });
 
   const handlePrevPage = () => {
     setCurrentPage(currentPage - 1);
   };
 
   const handleNextPage = () => {
-    setCurrentPage(currentPage + 1);
+    setCurrentPage((prev) => prev + 1);
   };
 
   return (
     <main className="bg-gray-beige-100 min-h-[85vh] px-5 py-10 500:px-10 md:px-20">
       <Hero />
       <section className="grid grid-cols-1 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center">
-        {loading ? (
+        {isPending ? (
           <ImageCardSkeletonGrid />
         ) : (
-          images.map((image) => <ImageCard key={image.id} imageData={image} />)
+          data.map((image: Image) => (
+            <ImageCard key={image.id} imageData={image} />
+          ))
         )}
       </section>
-      <section className="flex justify-center gap-10 py-10">
+      <section className="flex justify-center items-center gap-10 py-10">
         <Button
           disabled={currentPage === 1}
           size="md"
@@ -66,6 +52,9 @@ const Home = () => {
             <ChevronLeft /> <span className="font-medium mb-0.5">Prev</span>
           </>
         </Button>
+        <p className="text-sm font-semibold font-montserrat">
+          Page: {currentPage}
+        </p>
         <Button
           disabled={currentPage === 10}
           size="md"
