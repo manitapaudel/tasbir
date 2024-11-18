@@ -6,6 +6,7 @@ import ChevronLeft from "../components/icons/ChevronLeft";
 import ChevronRight from "../components/icons/ChevronRight";
 import ImageCardSkeletonGrid from "../components/ImageCardSkeletonGrid";
 import { Image } from "../types";
+import Hero from "../components/Hero";
 
 const Home = () => {
   const [images, setImages] = useState<Image[]>([]);
@@ -46,10 +47,7 @@ const Home = () => {
 
   return (
     <main className="bg-gray-beige-100 min-h-[85vh] px-5 py-10 500:px-10 md:px-20">
-      {/* <h2 className="font-inconsolata font-medium text-3xl text-center mb-2">
-        Our very own Exhibition.
-      </h2> */}
-
+      <Hero />
       <section className="grid grid-cols-1 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center">
         {loading ? (
           <ImageCardSkeletonGrid />

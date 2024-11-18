@@ -1,9 +1,9 @@
 import Button from "./Button";
 import SearchIcon from "./icons/SearchIcon";
 
-const Header = () => {
+const Hero = () => {
   return (
-    <header className="text-center bg-gray-beige-100 py-8">
+    <section className="text-center bg-gray-beige-100 py-8">
       <h1 className="uppercase font-semibold font-inconsolata text-4xl 500:text-5xl sm:text-6xl tracking-wider">
         Tasbir Studios.
       </h1>
@@ -31,8 +31,8 @@ const Header = () => {
           <SearchIcon />
         </Button>
       </form>
-    </header>
+    </section>
   );
 };
 
-export default Header;
+export default Hero;
