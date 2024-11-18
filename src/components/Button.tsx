@@ -8,6 +8,7 @@ type ButtonProps = {
   variant: "close" | "primary" | "secondary" | "text";
   extraClass?: string;
   title?: string;
+  type?: "submit" | "button" | "reset";
   onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
@@ -37,6 +38,7 @@ const Button = ({
   variant,
   extraClass,
   title,
+  type = "button",
   onClick,
 }: ButtonProps) => {
   return (
@@ -50,6 +52,7 @@ const Button = ({
       )}
       onClick={onClick}
       title={title}
+      type={type}
     >
       {children}
     </button>

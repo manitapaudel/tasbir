@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { Image } from "../types";
@@ -8,9 +8,11 @@ import ChevronLeft from "../components/icons/ChevronLeft";
 import ChevronRight from "../components/icons/ChevronRight";
 import ImageCardSkeletonGrid from "../components/ImageCardSkeletonGrid";
 import Hero from "../components/Hero";
+import NoData from "../components/NoData";
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [results, setResults] = useState<Image[]>([]);
 
   const { isPending, data } = useQuery({
     queryKey: ["images", currentPage],
@@ -20,6 +22,12 @@ const Home = () => {
       ),
     placeholderData: (prevData) => prevData,
   });
+
+  useEffect(() => {
+    if (!isPending) {
+      setResults(data);
+    }
+  }, [isPending, data]);
 
   const handlePrevPage = () => {
     setCurrentPage(currentPage - 1);
@@ -31,12 +39,14 @@ const Home = () => {
 
   return (
     <main className="bg-gray-beige-100 min-h-[85vh] px-5 py-10 500:px-10 md:px-20">
-      <Hero />
-      <section className="grid grid-cols-1 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center">
+      <Hero data={data} setResults={setResults} />
+      <section className="grid grid-cols-1 500:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 place-content-center min-h-20">
         {isPending ? (
           <ImageCardSkeletonGrid />
+        ) : results.length < 1 ? (
+          <NoData />
         ) : (
-          data.map((image: Image) => (
+          results.map((image: Image) => (
             <ImageCard key={image.id} imageData={image} />
           ))
         )}
