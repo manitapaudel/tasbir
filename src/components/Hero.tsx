@@ -66,10 +66,11 @@ const Hero = ({ data, setResults }: HeroProps) => {
           <SearchIcon />
         </Button>
       </form>
-      <p className={"font-medium font-montserrat mt-2"}>
+      <p className={"font-medium font-montserrat mt-2 text-sm sm:text-base"}>
         {searchCount > 0 && (
           <>
-            Showing <span className="text-red-800 text-lg">{searchCount}</span>{" "}
+            Showing{" "}
+            <span className="text-red-800 sm:text-lg">{searchCount}</span>{" "}
             search result{searchCount > 1 && "s"}.
           </>
         )}
