@@ -3,6 +3,8 @@ import { useState } from "react";
 import ExpandIcon from "./icons/ExpandIcon";
 import Lightbox from "./Lightbox";
 import { Image } from "../types";
+import HeartIcon from "./icons/HeartIcon";
+import { getLocalStorage } from "../utils";
 
 type ImageCardProps = {
   imageData: Image;
@@ -10,6 +12,10 @@ type ImageCardProps = {
 
 const ImageCard = ({ imageData }: ImageCardProps) => {
   const [showLightbox, setShowLightbox] = useState(false);
+  const favourites = getLocalStorage("favourites", []);
+  const isFavourite = favourites.some(
+    (item: Image) => item.id === imageData.id
+  );
 
   const toggleLightbox = () => {
     setShowLightbox(!showLightbox);
@@ -29,6 +35,9 @@ const ImageCard = ({ imageData }: ImageCardProps) => {
             className="h-[300px] w-full rounded-t-md group-hover:opacity-50"
           />
           <ExpandIcon extraClass="absolute hidden group-hover:block top-1/2 left-1/2" />
+          {isFavourite && (
+            <HeartIcon extraClass="absolute top-2 right-2 text-red-800" />
+          )}
         </div>
 
         <p className="font-indieFlower lg:text-[1.5vw] text-center py-2">
