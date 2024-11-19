@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 import ExpandIcon from "./icons/ExpandIcon";
 import Lightbox from "./Lightbox";
@@ -28,7 +30,7 @@ const ImageCard = ({ imageData }: ImageCardProps) => {
         onClick={toggleLightbox}
       >
         <div className="relative" title="Click to open lightbox">
-          <img
+          <LazyLoadImage
             src={imageData.download_url}
             alt=""
             width="400"
