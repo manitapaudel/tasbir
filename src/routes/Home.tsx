@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 import { Image } from "../types";
 import ImageCard from "../components/ImageCard";
@@ -14,13 +14,13 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [results, setResults] = useState<Image[]>([]);
 
-  const { isPending, data } = useQuery({
-    queryKey: ["images", currentPage],
+  const { isPending, data, isPlaceholderData } = useQuery({
+    queryKey: ["images", { currentPage }],
     queryFn: () =>
       fetch(`https://picsum.photos/v2/list?page=${currentPage}&limit=100`).then(
         (res) => res.json()
       ),
-    placeholderData: (prevData) => prevData,
+    placeholderData: keepPreviousData,
   });
 
   useEffect(() => {
@@ -34,7 +34,9 @@ const Home = () => {
   };
 
   const handleNextPage = () => {
-    setCurrentPage((prev) => prev + 1);
+    if (!isPlaceholderData) {
+      setCurrentPage((prev) => prev + 1);
+    }
   };
 
   return (
@@ -51,34 +53,32 @@ const Home = () => {
           ))
         )}
       </section>
-      {results.length === 100 && (
-        <section className="flex justify-center items-center gap-10 py-10">
-          <Button
-            disabled={currentPage === 1}
-            size="md"
-            variant="text"
-            onClick={handlePrevPage}
-          >
-            <>
-              <ChevronLeft /> <span className="font-medium mb-0.5">Prev</span>
-            </>
-          </Button>
-          <p className="text-sm font-semibold font-montserrat">
-            Page: {currentPage}
-          </p>
-          <Button
-            disabled={currentPage === 10}
-            size="md"
-            variant="text"
-            onClick={handleNextPage}
-          >
-            <>
-              <span className="font-medium mb-0.5">Next</span>
-              <ChevronRight />
-            </>
-          </Button>
-        </section>
-      )}
+      <section className="flex justify-center items-center gap-10 py-10">
+        <Button
+          disabled={currentPage === 1}
+          size="md"
+          variant="text"
+          onClick={handlePrevPage}
+        >
+          <>
+            <ChevronLeft /> <span className="font-medium mb-0.5">Prev</span>
+          </>
+        </Button>
+        <p className="text-sm font-semibold font-montserrat">
+          Page: {currentPage}
+        </p>
+        <Button
+          disabled={isPlaceholderData || results.length < 100}
+          size="md"
+          variant="text"
+          onClick={handleNextPage}
+        >
+          <>
+            <span className="font-medium mb-0.5">Next</span>
+            <ChevronRight />
+          </>
+        </Button>
+      </section>
     </main>
   );
 };

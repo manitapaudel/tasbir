@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 import { Image } from "../types";
 import Button from "./Button";
@@ -14,10 +14,6 @@ const Hero = ({ data, setResults }: HeroProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchCount, setSearchCount] = useState(0);
   const [showResetButton, setShowResetButton] = useState(false);
-  //   if (searchTerm === "") {
-  //     setResults(data);
-  //   }
-  // }, [searchTerm]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
