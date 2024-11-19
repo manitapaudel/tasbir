@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { navLinks } from "./constants";
+import { navLinks } from "../constants";
 import HamburgerIcon from "./icons/HamburgerIcon";
 import Drawer from "./Drawer";
 import Button from "./Button";
