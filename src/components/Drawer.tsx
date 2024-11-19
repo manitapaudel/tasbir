@@ -20,25 +20,20 @@ const Drawer = ({ drawerOpen, setDrawerOpen }: DrawerProps) => {
 
   return (
     <div
-      className={`fixed 850:hidden top-0 bottom-0 z-10 bg-red-800 text-white font-montserrat w-[100vw] 500:w-[60vw] sm:w-[50vw] h-full ease-in-out duration-300
+      className={`fixed sm:hidden top-0 bottom-0 z-10 bg-red-800 text-white font-montserrat w-[100vw] 500:w-[60vw] sm:w-[50vw] h-full ease-in-out duration-300
  ${drawerOpen ? "translate-x-0 " : "-translate-x-full"}`}
       ref={drawerRef}
     >
       <Button
         size="xs"
         variant="close"
-        extraClass="!p-1"
+        extraClass="!p-1 right-8"
         onClick={() => setDrawerOpen(false)}
         title="Close Drawer"
       >
         <CloseIcon />
       </Button>
-
-      <Link
-        to="/"
-        className="font-medium text-2xl"
-        onClick={() => setDrawerOpen(false)}
-      >
+      <Link to="/" onClick={() => setDrawerOpen(false)}>
         <img
           src="/logo-sm.png"
           width={200}
@@ -47,7 +42,7 @@ const Drawer = ({ drawerOpen, setDrawerOpen }: DrawerProps) => {
         />
       </Link>
 
-      <div className="flex flex-col gap-10 px-5 py-20">
+      <div className="flex flex-col gap-10 px-5 py-24">
         {navLinks.map(({ href, title }) => (
           <Link
             key={title}

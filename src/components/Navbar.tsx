@@ -33,11 +33,11 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`sticky top-0 z-10 flex items-center justify-between font-montserrat bg-gray-beige-100 h-[10vh] min-h-[72px] px-[5vw] transition-shadow duration-300 ${
+        className={`sticky top-0 z-10 flex items-center justify-between font-montserrat bg-gray-beige-100 h-[10vh] min-h-[72px] 500:px-[5vw] transition-shadow duration-300 ${
           hasShadow ? "shadow-lg" : ""
         }`}
       >
-        <Link to="/" className="font-medium text-2xl">
+        <Link to="/">
           <img
             src="/tasbir-logo.png"
             width={200}
