@@ -6,7 +6,7 @@ import Button from "./Button";
 import { Image } from "../types";
 
 const FavouriteToggle = ({ imageData }: { imageData: Image }) => {
-  const [favourites, setFavourites] = useState<Image[]>([]);
+  const [_favourites, setFavourites] = useState<Image[]>([]);
   const [isFavourite, setIsFavourite] = useState(false);
 
   useEffect(() => {
