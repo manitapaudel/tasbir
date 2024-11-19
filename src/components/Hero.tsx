@@ -3,6 +3,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Image } from "../types";
 import Button from "./Button";
 import SearchIcon from "./icons/SearchIcon";
+import CloseIcon from "./icons/CloseIcon";
 
 type HeroProps = {
   data: Image[];
@@ -12,8 +13,7 @@ type HeroProps = {
 const Hero = ({ data, setResults }: HeroProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchCount, setSearchCount] = useState(0);
-
-  // useEffect(() => {
+  const [showResetButton, setShowResetButton] = useState(false);
   //   if (searchTerm === "") {
   //     setResults(data);
   //   }
@@ -26,7 +26,16 @@ const Hero = ({ data, setResults }: HeroProps) => {
     );
     setResults(filteredData);
     setSearchCount(filteredData.length);
+    setShowResetButton(true);
   };
+
+  const handleReset = () => {
+    setResults(data);
+    setSearchTerm("");
+    setSearchCount(0);
+    setShowResetButton(false);
+  };
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) =>
     setSearchTerm(e.target.value);
 
@@ -55,16 +64,29 @@ const Hero = ({ data, setResults }: HeroProps) => {
           className="500:min-w-72 h-11 px-3 rounded-l-md"
           required
         />
-        <Button
-          size="md"
-          variant="primary"
-          title="Search Artists"
-          type="submit"
-          extraClass="rounded-l-none rounded-r-lg min-h-11"
-          onClick={() => {}}
-        >
-          <SearchIcon />
-        </Button>
+        {!showResetButton ? (
+          <Button
+            size="md"
+            variant="primary"
+            title="Search Artists"
+            type="submit"
+            extraClass="rounded-l-none rounded-r-lg min-h-11"
+            onClick={() => {}}
+          >
+            <SearchIcon />
+          </Button>
+        ) : (
+          <Button
+            size="md"
+            variant="secondary"
+            title="Reset search results"
+            type="button"
+            extraClass="rounded-l-none rounded-r-lg min-h-11"
+            onClick={handleReset}
+          >
+            <CloseIcon />
+          </Button>
+        )}
       </form>
       <p className={"font-medium font-montserrat mt-2 text-sm sm:text-base"}>
         {searchCount > 0 && (

@@ -51,32 +51,34 @@ const Home = () => {
           ))
         )}
       </section>
-      <section className="flex justify-center items-center gap-10 py-10">
-        <Button
-          disabled={currentPage === 1}
-          size="md"
-          variant="text"
-          onClick={handlePrevPage}
-        >
-          <>
-            <ChevronLeft /> <span className="font-medium mb-0.5">Prev</span>
-          </>
-        </Button>
-        <p className="text-sm font-semibold font-montserrat">
-          Page: {currentPage}
-        </p>
-        <Button
-          disabled={currentPage === 10}
-          size="md"
-          variant="text"
-          onClick={handleNextPage}
-        >
-          <>
-            <span className="font-medium mb-0.5">Next</span>
-            <ChevronRight />
-          </>
-        </Button>
-      </section>
+      {results.length === 100 && (
+        <section className="flex justify-center items-center gap-10 py-10">
+          <Button
+            disabled={currentPage === 1}
+            size="md"
+            variant="text"
+            onClick={handlePrevPage}
+          >
+            <>
+              <ChevronLeft /> <span className="font-medium mb-0.5">Prev</span>
+            </>
+          </Button>
+          <p className="text-sm font-semibold font-montserrat">
+            Page: {currentPage}
+          </p>
+          <Button
+            disabled={currentPage === 10}
+            size="md"
+            variant="text"
+            onClick={handleNextPage}
+          >
+            <>
+              <span className="font-medium mb-0.5">Next</span>
+              <ChevronRight />
+            </>
+          </Button>
+        </section>
+      )}
     </main>
   );
 };
