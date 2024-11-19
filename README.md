@@ -33,6 +33,7 @@ cd tasbir
 - On the Modal, you can find the social-media icons; you can click on them to share the image.
 - On the same modal, you can find a button that you can use to add or remove the image to and from the favourites list.
 - You can see the images with red hearts on the homepage, if they are on your favourites list.
+- Your favourites will be stored safely in the localStorage, so you won't have to worry about losing them.
 
 ## Resources
 
