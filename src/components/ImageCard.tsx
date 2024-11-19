@@ -40,7 +40,7 @@ const ImageCard = ({ imageData }: ImageCardProps) => {
           )}
         </div>
 
-        <p className="font-indieFlower lg:text-[1.5vw] text-center py-2">
+        <p className="font-indieFlower text-xl lg:text-2xl text-center py-2">
           {imageData.author}
         </p>
       </div>
