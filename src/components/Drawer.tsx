@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import useOutsideClickHandler from "../hooks/useOutsideClickHandler";
 import CloseIcon from "./icons/CloseIcon";
-import { navLinks } from "./constants";
+import { navLinks } from "../constants";
 import Button from "./Button";
 
 type DrawerProps = {
