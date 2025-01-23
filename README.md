@@ -48,3 +48,4 @@ cd tasbir
 - Icons from [Heroicons](https://heroicons.com/)
 - Logos created with [Canva](https://www.canva.com/)
 - Illustration from [unDraw](https://undraw.co/)
+- Design Inspiration [A Museum/Gallery App by Desire Creative Agency on Dribbble](https://dribbble.com/shots/22940414-A-Museum-Gallery-App)
